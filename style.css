@@ -1,0 +1,107 @@
+/* Hoop Streak site. Direction: an indoor arena after dark. Warm ink neutrals, one orange accent (the ball),
+   amber scoreboard digits as the signature. Spacing on a 4px grid. */
+:root {
+  --bg: #14100d;
+  --surface: #1d1814;
+  --raised: #26201b;
+  --line: rgba(244, 236, 228, 0.08);
+  --text: #f4ece4;
+  --text-2: #c8bcaf;
+  --muted: #94877a;
+  --accent: #ff7a1f;
+  --accent-ink: #ff9a52;
+  --led: #ffb020;
+  --radius-card: 16px;
+  --radius-ctl: 10px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.6 ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color 150ms var(--ease); }
+a:hover { color: var(--text); }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* top bar */
+.bar { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px; }
+.brand img { width: 36px; height: 36px; border-radius: 8px; }
+.bar nav { display: flex; gap: 24px; }
+.bar nav a { color: var(--text-2); text-decoration: none; font-size: 15px; font-weight: 500; min-height: 44px; display: inline-flex; align-items: center; }
+.bar nav a:hover, .bar nav a[aria-current="page"] { color: var(--text); }
+
+/* hero: text on the left, the game on the right */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 48px 0 80px; }
+.hero h1 { font-size: 52px; line-height: 1.08; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 20px; }
+.hero p.lede { font-size: 19px; color: var(--text-2); margin: 0 0 32px; max-width: 30em; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: var(--radius-ctl);
+  background: var(--text); color: var(--bg); font-weight: 600; text-decoration: none; transition: background-color 150ms var(--ease), transform 100ms var(--ease); }
+.btn:hover { background: #fff; color: var(--bg); }
+.btn:active { transform: scale(0.98); }
+.note { color: var(--muted); font-size: 15px; }
+
+.phones { position: relative; height: 560px; }
+.phone { position: absolute; width: 248px; border-radius: 36px; padding: 8px; background: #0b0908; border: 1px solid var(--line);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45); }
+.phone img { display: block; width: 100%; height: auto; border-radius: 28px; }
+.phone.front { right: 40px; top: 0; z-index: 2; }
+.phone.back { right: 236px; top: 64px; opacity: 0.9; }
+
+/* scoreboard strip: the game's real numbers */
+.board { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); margin: 0 0 80px; }
+.board div { padding: 20px 24px; }
+.board div + div { border-left: 1px solid var(--line); }
+.digits { font: 600 40px/1 ui-monospace, "SF Mono", Menlo, monospace; color: var(--led); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.board span { display: block; margin-top: 8px; color: var(--text-2); font-size: 15px; }
+
+/* content */
+section { margin: 0 0 64px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 600; margin: 0 0 16px; }
+h3 { font-size: 18px; font-weight: 600; margin: 0 0 4px; }
+p { margin: 0 0 16px; }
+.cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.card p { color: var(--text-2); margin: 0; }
+
+/* document pages */
+.doc { max-width: 720px; padding: 48px 0 80px; }
+.doc h1 { font-size: 40px; line-height: 1.1; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 8px; }
+.doc .meta { color: var(--muted); margin: 0 0 40px; }
+.doc section { margin: 0 0 40px; }
+.doc h2 { font-size: 22px; margin: 0 0 8px; }
+.doc p { color: var(--text-2); }
+.doc dt { font-weight: 600; color: var(--text); margin: 24px 0 4px; }
+.doc dd { margin: 0; color: var(--text-2); }
+.tag { display: inline-block; padding: 4px 12px; border-radius: 8px; background: var(--raised); color: var(--led); font-weight: 600; font-size: 15px; margin: 0 0 16px; }
+
+footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--muted); }
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; gap: 40px; padding: 24px 0 56px; }
+  .hero h1 { font-size: 36px; }
+  .phones { height: 440px; }
+  .phone { width: 196px; border-radius: 30px; }
+  .phone img { border-radius: 23px; }
+  .phone.front { right: auto; left: 50%; transform: translateX(-8%); }
+  .phone.back { right: auto; left: 50%; transform: translateX(-92%); top: 48px; }
+  .board { grid-template-columns: repeat(2, 1fr); }
+  .board div:nth-child(3) { border-left: 0; }
+  .board div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .cols { grid-template-columns: 1fr; }
+  .bar nav { gap: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
